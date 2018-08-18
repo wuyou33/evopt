@@ -9,5 +9,5 @@ function startup
 % *********************************************************************** %
 cd main;
 addpath(genpath(pwd()));
-cd ..,
+cd ..;
 end
