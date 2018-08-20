@@ -4,12 +4,7 @@
                    R2016b (9.1.0.441655) 64-bit (glnxa64)
                              September 7, 2016
 
- 
-To get started, type one of these: helpwin, helpdesk, or demo.
-For product information, visit www.mathworks.com.
- 
->> >> >> >> >> >> >> >> >> /home/duanqq/GitProj/DECCG
->> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> f01 - t01: 7.50389e-32
+f01 - t01: 7.50389e-32
 f01 - t02: 9.35871e-32
 f01 - t03: 4.77573e-32
 f01 - t04: 6.02306e-32
@@ -347,4 +342,3 @@ f13 - t23: 1.22631e-26
 f13 - t24: 1.83589e-27
 f13 - t25: 2.37690e-27
 f13: 7.19493e-01 (1.46866e+00)
->> 
