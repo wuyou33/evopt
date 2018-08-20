@@ -38,17 +38,44 @@ for f = 1 : length(funcInds)
 end
 
 %%
-meanComp = [meanDECCG; meanDECCGRepeat];
+% NOTE that here only the cooperative co-evolution part is run (i.e.,
+%   without adaptive weights).
+meanDECCGRepeat_ = Inf * ones(1, length(funcInds));
+curves_ = zeros(50000, length(funcInds));
+optResFolder_ = 'CentOS7waw'; % run on CentOS 7
+for f = 1 : length(funcInds)
+    optResFilename = sprintf('%s/testDECCG_f%02d.mat', optResFolder_, f);
+    load(optResFilename);
+    meanDECCGRepeat_(f) = mean(optys);
+    curveLength = Inf * ones(1, testMax);
+    for t = 1 : testMax
+        curveLength(t) = length(funcEvalCurves{t});
+        if curveLength(t) > size(curves_, 1) % unexpected length
+            fprintf(sprintf('*** Warning ***: %02d - %02d.', f, t));
+        end
+        curves_(1 : curveLength(t), f) = ...
+            curves_(1 : curveLength(t), f) + funcEvalCurves{t};
+    end
+    minCurveLength = min(curveLength);
+    curves_(1 : minCurveLength, f) = curves_(1 : minCurveLength, f) / testMax;
+    curves_((minCurveLength + 1) : end, f) = Inf;
+end
+
+%%
+meanComp = [meanDECCG; meanDECCGRepeat; meanDECCGRepeat_];
 
 %%
 for f = 1 : length(funcInds)
     figure(f);
-    plot(curves(:, f));
+    plot(curves(:, f)); hold on;
+    plot(curves_(:, f));
+    legend('DECCG', 'DECCGwaw');
 end
 
 %%
-subFuncInds = [1 3];
-for f = 1 : length(subFuncInds)
+for f = 1 : length(funcInds)
     figure(100 + f);
-    semilogy(curves(:, f));
+    semilogy(curves(:, f)); hold on;
+    semilogy(curves_(:, f));
+    legend('DECCG', 'DECCGwaw');
 end
