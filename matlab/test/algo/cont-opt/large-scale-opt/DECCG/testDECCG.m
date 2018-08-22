@@ -17,7 +17,6 @@ genMax = funcEvalMax / popSize;
 isAdaptiveWeight = true;
 % isAdaptiveWeight = false;
 
-traceFilename = 'result/testDECCG_f%02d_t%02d.mat';
 optResFilename = 'result/testDECCG_f%02d.mat';
 
 global initial_flag;
