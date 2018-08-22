@@ -86,6 +86,7 @@ chiFuncDim = funcDim ^ 0.5 * (1 - 1 / (4 * funcDim) + 1 / (21 * funcDim ^ 2));
 funcEvalNum = 0;
 funcEvalRuntime = 0;
 opty = Inf;
+optx = Inf * ones(1, funcDim);
 X = Inf * ones(funcDim, lambda);
 while funcEvalNum < funcEvalMax
     % generate and evaluate lambda X
