@@ -1,0 +1,77 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2016 The MathWorks, Inc.
+                   R2016b (9.1.0.441655) 64-bit (glnxa64)
+                             September 7, 2016
+
+* funcName: cfSphere + funcDim: 100 + testNum: 25
+* algoName: PureCMAES + algoFuncEvalMax: 5000000 + algoPopSize: 1
+test  1: opty = +9.6906e-11 || runTime = 1.81e+00 || funcEvalRuntime = 3.43e-02 || funcEvalNum = 17493 || <- optx [-3.85e-07 ... -1.04e-06]
+test  2: opty = +9.9185e-11 || runTime = 1.60e+00 || funcEvalRuntime = 2.91e-02 || funcEvalNum = 17901 || <- optx [+4.48e-07 ... +2.12e-07]
+test  3: opty = +9.5906e-11 || runTime = 1.63e+00 || funcEvalRuntime = 3.04e-02 || funcEvalNum = 18020 || <- optx [-7.17e-07 ... -6.46e-07]
+test  4: opty = +9.9826e-11 || runTime = 1.60e+00 || funcEvalRuntime = 2.94e-02 || funcEvalNum = 18156 || <- optx [+3.81e-07 ... -4.00e-07]
+test  5: opty = +9.5984e-11 || runTime = 1.54e+00 || funcEvalRuntime = 2.84e-02 || funcEvalNum = 17323 || <- optx [-1.15e-06 ... -2.49e-07]
+test  6: opty = +9.2865e-11 || runTime = 1.65e+00 || funcEvalRuntime = 3.09e-02 || funcEvalNum = 17952 || <- optx [+1.38e-07 ... +1.02e-06]
+test  7: opty = +9.9984e-11 || runTime = 1.60e+00 || funcEvalRuntime = 3.03e-02 || funcEvalNum = 17578 || <- optx [-2.23e-07 ... -9.03e-07]
+test  8: opty = +9.2224e-11 || runTime = 1.50e+00 || funcEvalRuntime = 2.76e-02 || funcEvalNum = 17476 || <- optx [+1.59e-06 ... +3.84e-07]
+test  9: opty = +9.0264e-11 || runTime = 1.56e+00 || funcEvalRuntime = 2.91e-02 || funcEvalNum = 17374 || <- optx [+4.45e-07 ... -3.20e-07]
+test 10: opty = +9.8267e-11 || runTime = 1.53e+00 || funcEvalRuntime = 2.87e-02 || funcEvalNum = 17680 || <- optx [+1.33e-06 ... +5.50e-07]
+test 11: opty = +9.7721e-11 || runTime = 1.59e+00 || funcEvalRuntime = 2.86e-02 || funcEvalNum = 18156 || <- optx [+3.50e-07 ... +3.90e-07]
+test 12: opty = +9.1531e-11 || runTime = 1.56e+00 || funcEvalRuntime = 2.89e-02 || funcEvalNum = 17867 || <- optx [-1.06e-06 ... +1.76e-06]
+test 13: opty = +9.0950e-11 || runTime = 1.64e+00 || funcEvalRuntime = 2.97e-02 || funcEvalNum = 18343 || <- optx [-8.64e-07 ... +1.53e-06]
+test 14: opty = +9.8884e-11 || runTime = 1.53e+00 || funcEvalRuntime = 2.81e-02 || funcEvalNum = 17714 || <- optx [-1.11e-07 ... +3.33e-07]
+test 15: opty = +8.7353e-11 || runTime = 1.57e+00 || funcEvalRuntime = 2.87e-02 || funcEvalNum = 17867 || <- optx [-1.64e-08 ... -4.74e-07]
+test 16: opty = +9.9375e-11 || runTime = 1.55e+00 || funcEvalRuntime = 2.86e-02 || funcEvalNum = 17833 || <- optx [-9.36e-07 ... -7.64e-07]
+test 17: opty = +8.2935e-11 || runTime = 1.45e+00 || funcEvalRuntime = 2.73e-02 || funcEvalNum = 17544 || <- optx [-7.50e-08 ... -4.49e-07]
+test 18: opty = +9.8288e-11 || runTime = 1.43e+00 || funcEvalRuntime = 2.73e-02 || funcEvalNum = 17578 || <- optx [-1.65e-06 ... +1.69e-06]
+test 19: opty = +9.5828e-11 || runTime = 1.47e+00 || funcEvalRuntime = 2.73e-02 || funcEvalNum = 17884 || <- optx [+4.84e-07 ... -6.58e-07]
+test 20: opty = +9.3502e-11 || runTime = 1.64e+00 || funcEvalRuntime = 3.14e-02 || funcEvalNum = 17884 || <- optx [+2.14e-06 ... +2.39e-07]
+test 21: opty = +9.6955e-11 || runTime = 1.58e+00 || funcEvalRuntime = 2.91e-02 || funcEvalNum = 17697 || <- optx [-8.12e-07 ... +5.16e-07]
+test 22: opty = +9.6664e-11 || runTime = 1.64e+00 || funcEvalRuntime = 3.00e-02 || funcEvalNum = 18734 || <- optx [+9.23e-09 ... +1.73e-06]
+test 23: opty = +9.0862e-11 || runTime = 1.58e+00 || funcEvalRuntime = 2.90e-02 || funcEvalNum = 18020 || <- optx [+3.47e-07 ... +1.57e-06]
+test 24: opty = +8.9371e-11 || runTime = 1.56e+00 || funcEvalRuntime = 2.88e-02 || funcEvalNum = 17935 || <- optx [-1.55e-06 ... +2.93e-07]
+test 25: opty = +8.7745e-11 || runTime = 1.53e+00 || funcEvalRuntime = 2.80e-02 || funcEvalNum = 17646 || <- optx [-9.71e-08 ... +1.62e-06]
+$ ------- >>> Summary <<< ------- $:
+* funcName: cfSphere + funcDim: 100 + testNum: 25
+* algoName: PureCMAES + algoFuncEvalMax: 5000000 + algoPopSize: 1
+opty            --- Mean & Std: 9.44e-11 & 4.58e-12
+runtime         --- Mean & Std: 1.57e+00 & 7.56e-02
+funcEvalRuntime --- Mean & Std: 2.91e-02 & 1.51e-03
+funcEvalRatio   --- Mean & Std:    1.85% &    0.03%
+funcEvalNum     --- Mean & Std: 1.78e+04 & 3.17e+02
+
+* funcName: cfSphere + funcDim: 1000 + testNum: 25
+* algoName: PureCMAES + algoFuncEvalMax: 5000000 + algoPopSize: 1
+test  1: opty = +9.9775e-11 || runTime = 2.07e+02 || funcEvalRuntime = 1.32e+00 || funcEvalNum = 161136 || <- optx [+1.20e-07 ... -9.21e-08]
+test  2: opty = +9.9856e-11 || runTime = 2.05e+02 || funcEvalRuntime = 1.37e+00 || funcEvalNum = 159960 || <- optx [+1.45e-07 ... +8.65e-08]
+test  3: opty = +9.9169e-11 || runTime = 2.00e+02 || funcEvalRuntime = 1.38e+00 || funcEvalNum = 160032 || <- optx [-2.24e-07 ... -4.75e-07]
+test  4: opty = +9.8637e-11 || runTime = 2.14e+02 || funcEvalRuntime = 1.33e+00 || funcEvalNum = 158520 || <- optx [-5.45e-07 ... +7.28e-08]
+test  5: opty = +9.8979e-11 || runTime = 2.16e+02 || funcEvalRuntime = 1.33e+00 || funcEvalNum = 160176 || <- optx [-2.43e-07 ... -3.04e-07]
+test  6: opty = +9.8105e-11 || runTime = 2.17e+02 || funcEvalRuntime = 1.34e+00 || funcEvalNum = 159480 || <- optx [-2.83e-07 ... -5.12e-07]
+test  7: opty = +9.8952e-11 || runTime = 2.30e+02 || funcEvalRuntime = 1.34e+00 || funcEvalNum = 159192 || <- optx [+9.24e-08 ... -1.31e-07]
+test  8: opty = +9.9831e-11 || runTime = 2.33e+02 || funcEvalRuntime = 1.34e+00 || funcEvalNum = 159936 || <- optx [-2.45e-07 ... +2.75e-07]
+test  9: opty = +9.8817e-11 || runTime = 2.37e+02 || funcEvalRuntime = 1.35e+00 || funcEvalNum = 159576 || <- optx [+4.06e-07 ... +4.21e-07]
+test 10: opty = +9.9108e-11 || runTime = 2.50e+02 || funcEvalRuntime = 1.33e+00 || funcEvalNum = 160080 || <- optx [-4.14e-07 ... -2.00e-08]
+test 11: opty = +9.7664e-11 || runTime = 2.57e+02 || funcEvalRuntime = 1.35e+00 || funcEvalNum = 159720 || <- optx [+4.19e-07 ... +1.26e-07]
+test 12: opty = +9.8930e-11 || runTime = 2.63e+02 || funcEvalRuntime = 1.35e+00 || funcEvalNum = 159768 || <- optx [-4.31e-07 ... +2.49e-07]
+test 13: opty = +9.9261e-11 || runTime = 2.56e+02 || funcEvalRuntime = 1.39e+00 || funcEvalNum = 159024 || <- optx [-2.76e-07 ... +1.86e-07]
+test 14: opty = +9.8543e-11 || runTime = 2.40e+02 || funcEvalRuntime = 1.41e+00 || funcEvalNum = 160296 || <- optx [+4.90e-07 ... -3.56e-08]
+test 15: opty = +9.9246e-11 || runTime = 2.76e+02 || funcEvalRuntime = 1.42e+00 || funcEvalNum = 159864 || <- optx [-5.24e-07 ... -7.35e-08]
+test 16: opty = +9.9025e-11 || runTime = 2.94e+02 || funcEvalRuntime = 1.44e+00 || funcEvalNum = 159648 || <- optx [+2.14e-07 ... -4.16e-07]
+test 17: opty = +9.9692e-11 || runTime = 2.86e+02 || funcEvalRuntime = 1.45e+00 || funcEvalNum = 160464 || <- optx [+1.27e-07 ... +1.21e-07]
+test 18: opty = +9.6975e-11 || runTime = 2.40e+02 || funcEvalRuntime = 1.43e+00 || funcEvalNum = 160968 || <- optx [-1.52e-07 ... -3.28e-07]
+test 19: opty = +9.9032e-11 || runTime = 2.79e+02 || funcEvalRuntime = 1.45e+00 || funcEvalNum = 159936 || <- optx [-1.11e-07 ... -6.24e-07]
+test 20: opty = +9.9796e-11 || runTime = 2.91e+02 || funcEvalRuntime = 1.46e+00 || funcEvalNum = 160824 || <- optx [+7.62e-08 ... +2.70e-07]
+test 21: opty = +9.9770e-11 || runTime = 2.58e+02 || funcEvalRuntime = 1.44e+00 || funcEvalNum = 159792 || <- optx [-1.69e-07 ... -1.55e-07]
+test 22: opty = +9.9823e-11 || runTime = 2.69e+02 || funcEvalRuntime = 1.39e+00 || funcEvalNum = 158400 || <- optx [+7.36e-07 ... -2.39e-07]
+test 23: opty = +9.9865e-11 || runTime = 2.66e+02 || funcEvalRuntime = 1.47e+00 || funcEvalNum = 159960 || <- optx [+4.75e-07 ... -4.90e-08]
+test 24: opty = +9.8284e-11 || runTime = 2.67e+02 || funcEvalRuntime = 1.46e+00 || funcEvalNum = 160848 || <- optx [+7.28e-07 ... -1.31e-07]
+test 25: opty = +9.9649e-11 || runTime = 2.66e+02 || funcEvalRuntime = 1.44e+00 || funcEvalNum = 161424 || <- optx [+3.10e-07 ... -1.81e-07]
+$ ------- >>> Summary <<< ------- $:
+* funcName: cfSphere + funcDim: 1000 + testNum: 25
+* algoName: PureCMAES + algoFuncEvalMax: 5000000 + algoPopSize: 1
+opty            --- Mean & Std: 9.91e-11 & 7.42e-13
+runtime         --- Mean & Std: 2.49e+02 & 2.81e+01
+funcEvalRuntime --- Mean & Std: 1.39e+00 & 5.05e-02
+funcEvalRatio   --- Mean & Std:    0.56% &    0.05%
+funcEvalNum     --- Mean & Std: 1.60e+05 & 7.39e+02
