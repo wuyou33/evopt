@@ -101,5 +101,25 @@ while genNum < genMax
             optxFlag = cat(1, optxFlag, -2);
         end
     end
+    
+    iterMax = 500;
+    if genNum + iterMax >= genMax
+        iterMax = genMax - genNum;
+    end
+    [xWeight, yWeight, funcEvalCurve, flag] = ...
+        de_weight(funcName, f, optx, opty, ...
+        funcLowerBounds, funcUpperBounds, popSize, iterMax, group);
+    if flag == 0
+        genNum = genNum + iterMax;
+    end
+    if ~isempty(funcEvalCurve)
+        funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
+    end
+    if yWeight < opty
+        opty = yWeight;
+        optx = xWeight;
+        optxSeq = cat(1, optxSeq, optx);
+        optxFlag = cat(1, optxFlag, -2);
+    end
 end
 end
