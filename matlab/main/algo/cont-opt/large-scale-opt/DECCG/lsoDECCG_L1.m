@@ -1,7 +1,7 @@
 function [opty, optx, funcEvalCurves, optxSeq, optxFlag] = lsoDECCG_L1(...
     funcName, f, funcDim, ...
     funcLowerBounds, funcUpperBounds, ...
-    popSize, genMax, numSubDim)
+    popSize, genMax, numSubDim, isAdaptiveWeight, isGreedyAfterCC)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 % Large Scale Optimization Algorithm (lso): DECCG with L1 metric.
 %
@@ -81,7 +81,31 @@ while genNum < genMax
         optxSeq = cat(1, optxSeq, optx);
         optxFlag = cat(1, optxFlag, -1);
         
-        iterMax = 400;
+        if isGreedyAfterCC
+            iterMax = 400;
+            if genNum + iterMax >= genMax
+                iterMax = genMax - genNum;
+            end
+            [xWeight, yWeight, funcEvalCurve, flag] = ...
+                de_weight(funcName, f, optx, opty, ...
+                funcLowerBounds, funcUpperBounds, popSize, iterMax, group);
+            if flag == 0
+                genNum = genNum + iterMax;
+            end
+            if ~isempty(funcEvalCurve)
+                funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
+            end
+            if yWeight < opty
+                opty = yWeight;
+                optx = xWeight;
+                optxSeq = cat(1, optxSeq, optx);
+                optxFlag = cat(1, optxFlag, -2);
+            end
+        end
+    end
+    
+    if isAdaptiveWeight
+        iterMax = 500;
         if genNum + iterMax >= genMax
             iterMax = genMax - genNum;
         end
@@ -98,28 +122,8 @@ while genNum < genMax
             opty = yWeight;
             optx = xWeight;
             optxSeq = cat(1, optxSeq, optx);
-            optxFlag = cat(1, optxFlag, -2);
+            optxFlag = cat(1, optxFlag, -3);
         end
-    end
-    
-    iterMax = 500;
-    if genNum + iterMax >= genMax
-        iterMax = genMax - genNum;
-    end
-    [xWeight, yWeight, funcEvalCurve, flag] = ...
-        de_weight(funcName, f, optx, opty, ...
-        funcLowerBounds, funcUpperBounds, popSize, iterMax, group);
-    if flag == 0
-        genNum = genNum + iterMax;
-    end
-    if ~isempty(funcEvalCurve)
-        funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
-    end
-    if yWeight < opty
-        opty = yWeight;
-        optx = xWeight;
-        optxSeq = cat(1, optxSeq, optx);
-        optxFlag = cat(1, optxFlag, -2);
     end
 end
 end
