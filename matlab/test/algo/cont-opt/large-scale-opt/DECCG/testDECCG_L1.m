@@ -16,6 +16,11 @@ testNum = 25;
 funcEvalMax = 5000 * funcDim;
 genMax = funcEvalMax / popSize;
 
+isGreedyAfterCC = true;
+% isGreedyAfterCC = false;
+isAdaptiveWeight = true;
+% isAdaptiveWeight = false;
+
 optResFilename = 'result/testDECCG_f%02d.mat';
 
 global initial_flag;
@@ -57,39 +62,14 @@ for f = 1 : 13
             lsoDECCG_L1(...
             'benchmark_func', f, funcDim, ...
             funcLowerBounds, funcUpperBounds, ...
-            popSize, genMax, numSubDim);
+            popSize, genMax, numSubDim, ...
+            isAdaptiveWeight, isGreedyAfterCC);
         optys = cat(1, optys, opty);
         optxs = cat(1, optxs, optx);
         funcEvalCurves{t} = cat(1, funcEvalCurves{t}, funcEvalCurve);
-        % --------------------------------------------------------------- %
-        %         i = 1;
-        %         dis = squareform(pdist(optxSeq, 'cityblock'));
-        %         while i < length(optxFlag)
-        %             if i + groupNum <= length(optxFlag) && ...
-        %                     isequal(optxFlag(i + 1) : optxFlag(i + groupNum), 1 : groupNum)
-        %                 tmp = 0;
-        %                 for j = 0 : (groupNum - 1)
-        %                     tmp = tmp + dis(i + j, i + j + 1);
-        %                 end
-        %                 if abs(tmp - dis(i, i + groupNum)) > 1e-6
-        %                     fprintf('%20.15e vs. %20.15e\n', tmp, dis(i, i + groupNum));
-        %                     error('ERROR!');
-        %                 end
-        %                 i = i + groupNum;
-        %             else
-        %                 i = i + 1;
-        %             end
-        %         end
-        %         optxConv = [];
-        %         for i = 1 : (length(optxFlag) - 1)
-        %             optxConv = cat(1, optxConv, dis(i, i + 1));
-        %         end
-        %         figure(f);
-        %         plot(optxConv);
-        % --------------------------------------------------------------- %
     end
     save(sprintf(optResFilename, f), ...
-        'optys', 'optxs', 'funcEvalCurves');
+        'optys', 'optxs', 'funcEvalCurves', 'optxFlag');
     fprintf(sprintf('f%02d: %7.5e (%7.5e)\n', ...
         f, mean(optys), std(optys)));
 end
