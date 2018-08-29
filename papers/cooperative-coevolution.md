@@ -2,6 +2,8 @@
 
 ## Theory
 
+Wiegand, R.P., Liles, W.C. and De Jong, K.A., 2002. Modeling variation in cooperative coevolution using evolutionary game theory. In FOGA (pp. 203-220).
+
 Panait, L., 2010. Theoretical convergence guarantees for cooperative coevolutionary algorithms. Evolutionary Computation, 18(4), pp.581-615.
 
 -------
