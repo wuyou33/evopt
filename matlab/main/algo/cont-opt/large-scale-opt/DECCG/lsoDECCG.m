@@ -1,6 +1,7 @@
-function [opty, optx, funcEvalCurves] = lsoDECCG(funcName, f, funcDim, ...
+function [opty, optx, funcEvalCurves, optxSeq, optxFlag] = lsoDECCG(...
+    funcName, f, funcDim, ...
     funcLowerBounds, funcUpperBounds, ...
-    popSize, genMax, numSubDim, isAdaptiveWeight)
+    popSize, genMax, numSubDim, isAdaptiveWeight, isGreedyAfterCC)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 % Large Scale Optimization Algorithm (lso): DECCG.
 %
@@ -14,7 +15,7 @@ function [opty, optx, funcEvalCurves] = lsoDECCG(funcName, f, funcDim, ...
 % ---------------
 % || COPYRIGHT ||
 % ---------------
-%   * Yang, Z. (for the original version)
+%   * Yang, Z.
 %
 % ---------------
 % ||   NOTE    ||
@@ -36,6 +37,8 @@ X = funcLowerBounds + ...
 y = feval(funcName, X, f);
 [opty, optyInd] = min(y);
 optx = X(optyInd, :);
+optxSeq = optx;
+optxFlag = 0;
 
 genNum = 0;
 while genNum < genMax
@@ -64,19 +67,45 @@ while genNum < genMax
         genNum = genNum + iterMax;
         funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
         X(:, subDimInd) = subX;
+        optxSeq = cat(1, optxSeq, optx);
+        optxFlag = cat(1, optxFlag, g);
     end
     
     y = feval(funcName, X, f);
     [yMin, yMinInd] = min(y);
+    genNum = genNum + 1;
+    funcEvalCurves = cat(1, funcEvalCurves, y);
     if yMin < opty
         opty = yMin;
         optx = X(yMinInd, :);
+        optxSeq = cat(1, optxSeq, optx);
+        optxFlag = cat(1, optxFlag, -1);
+        
+        if isGreedyAfterCC
+            iterMax = 200;
+            if genNum + iterMax >= genMax
+                iterMax = genMax - genNum;
+            end
+            [xWeight, yWeight, funcEvalCurve, flag] = ...
+                de_weight(funcName, f, optx, opty, ...
+                funcLowerBounds, funcUpperBounds, popSize, iterMax, group);
+            if flag == 0
+                genNum = genNum + iterMax;
+            end
+            if ~isempty(funcEvalCurve)
+                funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
+            end
+            if yWeight < opty
+                opty = yWeight;
+                optx = xWeight;
+                optxSeq = cat(1, optxSeq, optx);
+                optxFlag = cat(1, optxFlag, -2);
+            end
+        end
     end
-    genNum = genNum + 1;
-    funcEvalCurves = cat(1, funcEvalCurves, y);
     
     if isAdaptiveWeight
-        iterMax = 200;
+        iterMax = 400;
         if genNum + iterMax >= genMax
             iterMax = genMax - genNum;
         end
@@ -92,55 +121,8 @@ while genNum < genMax
         if yWeight < opty
             opty = yWeight;
             optx = xWeight;
-        end
-        
-        iterMax = 200;
-        if genNum + iterMax >= genMax
-            iterMax = genMax - genNum;
-        end
-        [yMax, yMaxInd] = max(y);
-        xMax = X(yMaxInd, :);
-        [xWeight, yWeight, funcEvalCurve, flag] = ...
-            de_weight(funcName, f, xMax, opty, ...
-            funcLowerBounds, funcUpperBounds, popSize, iterMax, group);
-        if flag == 0
-            genNum = genNum + iterMax;
-        end
-        if ~isempty(funcEvalCurve)
-            funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
-        end
-        if yWeight < yMax
-            y(yMaxInd) = yWeight;
-            X(yMaxInd, :) = xWeight;
-        end
-        if yWeight < opty
-            opty = yWeight;
-            optx = xWeight;
-        end
-        
-        iterMax = 200;
-        if genNum + iterMax >= genMax
-            iterMax = genMax - genNum;
-        end
-        yRandInd = randperm(popSize);
-        yRandInd = yRandInd(1);
-        yRand = y(yRandInd);
-        xRand = X(yRandInd, :);
-        [xWeight, yWeight, funcEvalCurve, flag] = ...
-            de_weight(funcName, f, xRand, opty, ...
-            funcLowerBounds, funcUpperBounds, popSize, iterMax, group);
-        if flag == 0
-            genNum = genNum + iterMax;
-        end
-        if ~isempty(funcEvalCurve)
-            funcEvalCurves = cat(1, funcEvalCurves, funcEvalCurve);
-        end
-        if yWeight < yRand
-            X(yRandInd, :) = xWeight;
-        end
-        if yWeight < opty
-            opty = yWeight;
-            optx = xWeight;
+            optxSeq = cat(1, optxSeq, optx);
+            optxFlag = cat(1, optxFlag, -3);
         end
     end
 end
