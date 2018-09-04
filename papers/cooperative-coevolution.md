@@ -2,6 +2,8 @@
 
 ## Theory
 
+Ficici, S.G., Melnik, O. and Pollack, J.B., 2005. A game-theoretic and dynamical-systems analysis of selection methods in coevolution. IEEE Transactions on Evolutionary Computation, 9(6), pp.580-602. (**NOTE the difference between the coevolution model and the CC model**)
+
 Wiegand, R.P., Liles, W.C. and De Jong, K.A., 2002. Modeling variation in cooperative coevolution using evolutionary game theory. In FOGA (pp. 203-220).
 
 Panait, L., 2010. Theoretical convergence guarantees for cooperative coevolutionary algorithms. Evolutionary Computation, 18(4), pp.581-615.
